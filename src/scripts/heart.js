@@ -17,23 +17,19 @@
   limitations under the License.
 */
 
-var testAlgo;
-
-(function () {
+let testAlgo;
+(() => {
   var PINK_COLOR = 0xff7f7f;
-
   function initialMap(height, width) {
     var map = new Array(height);
     for (var y = 0; y < height; y++) {
       map[y] = new Array();
-
       for (var x = 0; x < width; x++) {
         map[y][x] = 0;
       }
     }
     return map;
   }
-
   function renderHeart(map, x, y, color) {
     map[y - 2][x - 1] = color;
     map[y - 2][x + 1] = color;
@@ -42,30 +38,25 @@ var testAlgo;
     map[y - 1][x] = color;
     map[y - 1][x + 1] = color;
     map[y - 1][x + 2] = color;
-    map[y][x - 2] = color;
+    // map[y][x - 2] = color;
     map[y][x - 1] = color;
     map[y][x] = color;
     map[y][x + 1] = color;
-    map[y][x + 2] = color;
-    map[y + 1][x - 1] = color;
+    // map[y][x + 2] = color;
+    // map[y + 1][x - 1] = color;
     map[y + 1][x] = color;
-    map[y + 1][x + 1] = color;
+    // map[y + 1][x + 1] = color;
     map[y + 2][x] = color;
     return map;
   }
-
   var algo = new Object();
   algo.apiVersion = 2;
   algo.name = 'Heart';
   algo.author = 'John Syomochkin';
-
   algo.acceptColors = 1;
   algo.properties = new Array();
-
   algo.initialized = false;
-
   var util = new Object();
-
   util.initialize = function (width, height) {
     algo.heart = new Object();
     algo.heart.x = Math.floor(Math.random() * (width - 4)) + 2;
@@ -75,41 +66,32 @@ var testAlgo;
     algo.initialized = true;
     return;
   };
-
   algo.rgbMap = function (width, height, rgb, progstep) {
     if (algo.initialized === false) {
       util.initialize(width, height);
     }
-
     var map = initialMap(height, width);
     var x = algo.heart.x;
     var y = algo.heart.y;
     var xSpeed = algo.heart.xSpeed;
     var ySpeed = algo.heart.ySpeed;
-
     if (y + ySpeed < 2 || y + ySpeed > height - 3) {
       ySpeed *= -1;
     }
     if (x + xSpeed < 2 || x + xSpeed > width - 3) {
       xSpeed *= -1;
     }
-
     x += xSpeed;
     y += ySpeed;
-
     algo.heart.x = x;
     algo.heart.y = y;
     algo.heart.xSpeed = xSpeed;
     algo.heart.ySpeed = ySpeed;
-    return renderHeart(map, x, y, PINK_COLOR);
+    return renderHeart(map, x, y, rgb);
   };
-
   algo.rgbMapStepCount = function (width, height) {
     // This make no difference to the script ;-)
-    return 2;
+    return 1;
   };
-
   testAlgo = algo;
-
-  return algo;
 })();
