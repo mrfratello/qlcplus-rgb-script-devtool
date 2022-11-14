@@ -16,20 +16,12 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
+import { initialMap } from '../common/initialMap';
 
 let testAlgo;
 (() => {
   var PINK_COLOR = 0xff7f7f;
-  function initialMap(height, width) {
-    var map = new Array(height);
-    for (var y = 0; y < height; y++) {
-      map[y] = new Array();
-      for (var x = 0; x < width; x++) {
-        map[y][x] = 0;
-      }
-    }
-    return map;
-  }
+
   function renderHeart(map, x, y, color) {
     map[y - 2][x - 1] = color;
     map[y - 2][x + 1] = color;
@@ -94,4 +86,8 @@ let testAlgo;
     return 1;
   };
   testAlgo = algo;
+
+  return algo;
 })();
+
+// console.log(testAlgo);
