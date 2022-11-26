@@ -20,4 +20,7 @@ module.exports = config({
   output: {
     path: resolve(__dirname, 'dist/scripts'),
   },
+  options: {
+    minify: true,
+  },
 });

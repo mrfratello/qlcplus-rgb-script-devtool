@@ -20,11 +20,13 @@ filename: <%= name.split(' ').join('').toLowerCase() %>
   See the License for the specific language governing permissions and
   limitations under the License.
 */
+import { fakeSideEffect } from '../common/fakeSideEffect';
 <% if (isUseInitialMap) { %>
 import { initialMap } from '../common/initialMap';
 <% } -%>
 
 let testAlgo; // development tool access
+fakeSideEffect(testAlgo); // need so `testAlgo` is not deleted by tree shaking
 
 (() => {
   const algo = {

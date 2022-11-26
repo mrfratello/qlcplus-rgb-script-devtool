@@ -18,7 +18,10 @@
 */
 
 // Development tool access
+import { fakeSideEffect } from '../common/fakeSideEffect';
+
 var testAlgo;
+fakeSideEffect(testAlgo);
 
 (function () {
   var colorPalette = new Object();

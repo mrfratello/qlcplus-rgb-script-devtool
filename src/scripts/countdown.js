@@ -17,6 +17,7 @@
   limitations under the License.
 */
 import { initialMap } from '../common/initialMap';
+import { fakeSideEffect } from '../common/fakeSideEffect';
 
 function dashCoords([y, x], yOffset) {
   return [
@@ -152,6 +153,8 @@ function getLast2Digits(n) {
 }
 
 let testAlgo;
+fakeSideEffect(testAlgo);
+
 (() => {
   var algo = new Object();
   algo.apiVersion = 2;
@@ -193,5 +196,3 @@ let testAlgo;
   testAlgo = algo;
   return algo;
 })();
-
-console.log(testAlgo);

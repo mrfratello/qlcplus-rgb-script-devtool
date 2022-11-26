@@ -16,9 +16,12 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
+import { fakeSideEffect } from '../common/fakeSideEffect';
 import { initialMap } from '../common/initialMap';
 
 let testAlgo;
+fakeSideEffect(testAlgo);
+
 (() => {
   var PINK_COLOR = 0xff7f7f;
 
@@ -89,5 +92,3 @@ let testAlgo;
 
   return algo;
 })();
-
-// console.log(testAlgo);
