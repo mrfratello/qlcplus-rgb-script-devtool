@@ -10,8 +10,8 @@
     "deploy": "rm -rf ./dist/scripts && npm run build && npm run cp",
     "generate": "hygen rgb-script new"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "John Syomochkin",
+  "license": "MIT",
   "dependencies": {
     "@swc/cli": "^0.1.57",
     "@swc/core": "^1.3.20",
