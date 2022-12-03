@@ -1,5 +1,5 @@
 ---
-to: src/scripts/<%= name.split(' ').join('').toLowerCase() %>.js
+to: src/scripts/<%= name.split(' ').join('').toLowerCase() %>.ts
 filename: <%= name.split(' ').join('').toLowerCase() %>
 ---
 /*
@@ -24,12 +24,20 @@ import { fakeSideEffect } from '../common/fakeSideEffect';
 <% if (isUseInitialMap) { %>
 import { initialMap } from '../common/initialMap';
 <% } -%>
+import type { Algo<%= isUseInitialState ? ', Utils' : '' %> } from '../types';
 
 let testAlgo; // development tool access
+// @ts-ignore
 fakeSideEffect(testAlgo); // need so `testAlgo` is not deleted by tree shaking
 
+/**
+ * Additional properties for storage in the main object `algo`
+ */
+interface State {
+}
+
 (() => {
-  const algo = {
+  const algo: Algo<State> = {
     apiVersion: 2,
     name: '<%= name %>',
     author: '<%= author %>',
@@ -41,7 +49,7 @@ fakeSideEffect(testAlgo); // need so `testAlgo` is not deleted by tree shaking
   };
 
   <%_ if (isUseInitialState) { -%>
-  const util = {
+  const util: Utils = {
     initialize(width, height) {
       if (algo.initialized) {
         return;
@@ -77,5 +85,3 @@ fakeSideEffect(testAlgo); // need so `testAlgo` is not deleted by tree shaking
 
   return algo;
 })();
-
-console.log(testAlgo);

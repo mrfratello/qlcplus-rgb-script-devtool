@@ -1,3 +1,4 @@
-- [ ] typescript
+- [x] typescript
 - [ ] запуск dev сервера и watch mode одной командой
+- [ ] util functions for define properties
 - [ ] тесты для генератора

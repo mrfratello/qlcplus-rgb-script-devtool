@@ -2,7 +2,7 @@ const { config } = require('@swc/core/spack');
 const spawn = require('cross-spawn');
 const { parse, resolve } = require('path');
 
-const result = spawn.sync('ls', ['src/scripts/*.js'], {
+const result = spawn.sync('ls', ['src/scripts/*.js', 'src/scripts/*.ts'], {
   shell: true,
 });
 
